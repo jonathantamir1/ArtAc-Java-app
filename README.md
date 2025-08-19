@@ -49,6 +49,25 @@ Set the environment variable in your deployment platform:
 java -jar target/chatbot-app-0.0.1-SNAPSHOT.jar
 ```
 
+### 5. Docker (optional)
+Build and run locally with Docker:
+```bash
+docker build -t chatbot-app:local .
+docker run -p 8080:8080 -e CHATBOT_API_KEY="$CHATBOT_API_KEY" chatbot-app:local
+```
+
+### 6. CI/CD with Jenkins
+This repo includes a `Jenkinsfile` that:
+- Checks out code
+- Builds and tests with Maven inside a container
+- Builds a Docker image and pushes to Docker Hub
+- Deploys to an EC2 instance via SSH using `scripts/deploy.sh`
+
+Required Jenkins credentials:
+- `dockerhub-creds`: Docker Hub username/password
+- `ec2-ssh-key`: SSH private key for EC2 (Username often `ec2-user` or `ubuntu`)
+- `CHATBOT_API_KEY`: Secret text containing your Gemini API key
+
 ### 4. Access the Application
 Open your browser and go to: `http://localhost:8080`
 
