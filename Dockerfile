@@ -1,5 +1,5 @@
 # Build stage is handled by Jenkins using Maven; here we just run the fat JAR
-FROM eclipse-temurin:17-jre-alpine
+FROM openjdk:17-slim
 
 ENV APP_HOME=/app \
     JAVA_OPTS="" \
