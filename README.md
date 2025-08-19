@@ -1,15 +1,6 @@
-# Secure Chatbot Application
+# Chatbot Application
 
 A secure Spring Boot web application that provides a chatbot interface using Google's Gemini API.
-
-## Security Features
-
-- Spring Security configuration with secure headers
-- Input validation and sanitization
-- API key management through environment variables
-- CSRF protection considerations
-- Secure cookie configuration
-- Rate limiting considerations
 
 ## Setup Instructions
 
@@ -91,11 +82,6 @@ src/
 │           └── index.html               # Frontend template
 ```
 
-## API Endpoints
-
-- `GET /` - Main chat interface
-- `POST /api/chat` - Send message to chatbot
-
 ## Security Considerations
 
 1. **API Key Security**: Never commit API keys to version control
@@ -104,31 +90,4 @@ src/
 4. **Headers**: Security headers are configured to prevent common attacks
 5. **Rate Limiting**: Consider implementing rate limiting for production use
 
-## Deployment Checklist
 
-- [ ] Set `CHATBOT_API_KEY` environment variable
-- [ ] Enable HTTPS/SSL
-- [ ] Configure proper CORS policies if needed
-- [ ] Enable CSRF protection for production
-- [ ] Set up monitoring and logging
-- [ ] Configure rate limiting
-- [ ] Review and test security headers
-
-## Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `CHATBOT_API_KEY` | Google Gemini API key | Yes |
-| `SERVER_PORT` | Server port (default: 8080) | No |
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
