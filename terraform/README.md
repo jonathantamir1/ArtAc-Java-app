@@ -2,7 +2,7 @@
 
 This directory contains Terraform configuration to automatically provision AWS infrastructure for the Chatbot application.
 
-## Prerequisites
+## Prerequisites 
 
 1. **Terraform** installed (version >= 1.0)
 2. **AWS CLI** configured with appropriate credentials
