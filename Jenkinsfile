@@ -44,7 +44,7 @@ pipeline {
                                         string(credentialsId: 'CHATBOT_API_KEY', variable: 'CHATBOT_API_KEY')
                                     ]) {
             sh 'scp -i "$SSH_KEY" -o StrictHostKeyChecking=no scripts/deploy.sh "$SSH_USER"@"${EC2_HOST}":/tmp/deploy.sh'
-            sh 'ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER"@"${EC2_HOST}" "chmod +x /tmp/deploy.sh && CHATBOT_API_KEY="$CHATBOT_API_KEY" /tmp/deploy.sh ${DOCKER_IMAGE} ${IMAGE_TAG} chatbot-app 8081"'
+            sh 'ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER"@"${EC2_HOST}" "chmod +x /tmp/deploy.sh && CHATBOT_API_KEY="$CHATBOT_API_KEY" /tmp/deploy.sh ${DOCKER_IMAGE} ${IMAGE_TAG} chatbot-app 8080"'
           }
 
         }

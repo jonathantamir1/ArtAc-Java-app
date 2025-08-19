@@ -42,4 +42,16 @@ application-secrets.properties
 logs/
 *.log
 
+### Terraform ###
+terraform.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+### SSH Keys ###
+*.pem
+*.key
+id_rsa*
+
 

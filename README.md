@@ -1,93 +1,108 @@
-# Chatbot Application
+# ArtAc Home Assignment ChatBot
 
-A secure Spring Boot web application that provides a chatbot interface using Google's Gemini API.
+A Spring Boot web application with an AI-powered chatbot using Google's Gemini API.
 
-## Setup Instructions
+## 🚀 Quick Start
 
-### 1. Clone the Repository
+### 1. Clone and Setup
 ```bash
-git clone <your-repo-url>
-cd chatbot-app
+git clone https://github.com/jonathantamir1/ArtAc-Java-app.git
+cd ArtAc-Java-app
 ```
 
-### 2. Set Environment Variables
-**IMPORTANT: Never commit your API key to Git!**
-
-#### For Local Development:
-Create a `.env` file in the project root (this file is gitignored):
+### 2. Get API Key
+1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Create an API key
+3. Set it as environment variable:
 ```bash
-CHATBOT_API_KEY=your-actual-api-key-here
+export CHATBOT_API_KEY="your-api-key-here"
 ```
 
-Or set the environment variable directly:
+### 3. Run the Application
 ```bash
-export CHATBOT_API_KEY=your-actual-api-key-here
-```
-
-#### For Production/Deployment:
-Set the environment variable in your deployment platform:
-- **Heroku**: `heroku config:set CHATBOT_API_KEY=your-actual-api-key`
-- **AWS**: Set in EC2 instance or Lambda environment variables
-- **Docker**: Use `-e CHATBOT_API_KEY=your-key` or docker-compose environment section
-
-### 3. Build and Run
-```bash
-# Using Maven
 ./mvnw spring-boot:run
-
-# Or build JAR and run
-./mvnw clean package
-java -jar target/chatbot-app-0.0.1-SNAPSHOT.jar
 ```
 
-### 5. Docker (optional)
-Build and run locally with Docker:
+### 4. Access the Chatbot
+Open [http://localhost:8080](http://localhost:8080) in your browser
+
+## 🐳 Docker (Optional)
+
 ```bash
-docker build -t chatbot-app:local .
-docker run -p 8080:8080 -e CHATBOT_API_KEY="$CHATBOT_API_KEY" chatbot-app:local
+docker build -t chatbot-app .
+docker run -p 8080:8080 -e CHATBOT_API_KEY="$CHATBOT_API_KEY" chatbot-app
 ```
 
-### 6. CI/CD with Jenkins
-This repo includes a `Jenkinsfile` that:
-- Checks out code
-- Builds and tests with Maven inside a container
-- Builds a Docker image and pushes to Docker Hub
-- Deploys to an EC2 instance via SSH using `scripts/deploy.sh`
+## ☁️ AWS Deployment
 
-Required Jenkins credentials:
-- `dockerhub-creds`: Docker Hub username/password
-- `ec2-ssh-key`: SSH private key for EC2 (Username often `ec2-user` or `ubuntu`)
-- `CHATBOT_API_KEY`: Secret text containing your Gemini API key
+### Prerequisites
+- AWS CLI configured
+- Terraform installed
 
-### 4. Access the Application
-Open your browser and go to: `http://localhost:8080`
-
-## Project Structure
-```
-src/
-├── main/
-│   ├── java/com/example/chatbot/
-│   │   ├── ChatbotApplication.java      # Main Spring Boot application
-│   │   ├── config/
-│   │   │   └── SecurityConfig.java      # Security configuration
-│   │   ├── controller/
-│   │   │   └── ChatController.java      # Web and API endpoints
-│   │   ├── model/
-│   │   │   └── ChatMessage.java         # Data model
-│   │   └── service/
-│   │       └── ChatbotService.java      # Business logic
-│   └── resources/
-│       ├── application.properties        # Configuration
-│       └── templates/
-│           └── index.html               # Frontend template
+### Deploy
+```bash
+cd terraform
+cp terraform.tfvars.example terraform.tfvars
+# Edit terraform.tfvars with your API key
+terraform init
+terraform apply
 ```
 
-## Security Considerations
+## 🔄 CI/CD Pipeline
 
-1. **API Key Security**: Never commit API keys to version control
-2. **Input Validation**: All user inputs are validated and sanitized
-3. **HTTPS**: Configure SSL/TLS for production
-4. **Headers**: Security headers are configured to prevent common attacks
-5. **Rate Limiting**: Consider implementing rate limiting for production use
+The project includes a Jenkins pipeline that:
+- Builds the application
+- Runs tests
+- Creates Docker image
+- Deploys to AWS EC2
+
+## 📁 Project Structure
+
+```
+src/main/java/com/example/chatbot/
+├── ChatbotApplication.java      # Main application
+├── config/SecurityConfig.java   # Security settings
+├── controller/ChatController.java # Web endpoints
+├── model/ChatMessage.java       # Data model
+└── service/ChatbotService.java  # Business logic
+```
+
+## 🧪 Testing
+
+```bash
+./mvnw test
+```
+
+## 🔧 Configuration
+
+Key settings in `application.properties`:
+```properties
+chatbot.api.key=${CHATBOT_API_KEY}
+chatbot.api.url=https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent
+```
+
+## 🚨 Common Issues
+
+### API Key Not Working
+```bash
+export CHATBOT_API_KEY="your-actual-key"
+./mvnw spring-boot:run
+```
+
+### Port Already in Use
+```bash
+export SERVER_PORT=8081
+./mvnw spring-boot:run
+```
+
+## 📚 API Endpoint
+
+- **POST** `/api/chat`
+- **Body**: `{"message": "Hello"}`
+- **Response**: `{"response": "AI response"}`
+
+---
+
+**Built with Spring Boot, Docker, and AWS**
 
 
