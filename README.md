@@ -4,7 +4,7 @@ A Spring Boot web application with an AI-powered chatbot using Google's Gemini A
 
 ## 🚀 Quick Start
 
-### 1. Clone and Setup
+### 1. Clone and Setup 
 ```bash
 git clone https://github.com/jonathantamir1/ArtAc-Java-app.git
 cd ArtAc-Java-app
@@ -104,5 +104,4 @@ export SERVER_PORT=8081
 ---
 
 **Built with Spring Boot, Docker, and AWS**
-
 
