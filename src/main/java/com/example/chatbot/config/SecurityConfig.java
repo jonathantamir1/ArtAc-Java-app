@@ -15,7 +15,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/", "/chat", "/api/chat", "/css/**", "/js/**").permitAll()
+                .requestMatchers("/", "/chat", "/api/chat", "/css/**", "/js/**", "/images/**", "/favicon.ico", "/favicon.svg").permitAll()
                 .anyRequest().authenticated()
             )
             .csrf(csrf -> csrf.disable())

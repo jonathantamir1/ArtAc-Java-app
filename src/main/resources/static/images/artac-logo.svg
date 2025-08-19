@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
+  <defs>
+    <style>
+      .logo-text { font-family: Arial, sans-serif; font-weight: bold; fill: #4a4a4a; }
+      .tagline { font-family: Arial, sans-serif; font-style: italic; fill: #4a4a4a; font-size: 12px; }
+      .plus-sign { font-family: Arial, sans-serif; font-weight: bold; fill: #000000; font-size: 16px; }
+    </style>
+  </defs>
+  
+  <!-- ARTAC Logo Text -->
+  <text x="10" y="45" class="logo-text" font-size="32">ARTAC</text>
+  
+  <!-- Plus Sign Superscript on A -->
+  <text x="25" y="25" class="plus-sign">+</text>
+  
+  <!-- Engineers' Home Tagline -->
+  <text x="140" y="65" class="tagline">Engineers' Home</text>
+</svg>
