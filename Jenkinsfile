@@ -45,7 +45,28 @@ pipeline {
                                     ]) {
             sh 'scp -i "$SSH_KEY" -o StrictHostKeyChecking=no scripts/deploy.sh "$SSH_USER"@"${EC2_HOST}":/tmp/deploy.sh'
             sh 'ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER"@"${EC2_HOST}" "chmod +x /tmp/deploy.sh && CHATBOT_API_KEY="$CHATBOT_API_KEY" /tmp/deploy.sh ${DOCKER_IMAGE} ${IMAGE_TAG} chatbot-app 8080"'
+            
           }
+    }
+    
+    stage('Health Check') {
+      steps {
+        echo "Performing health check on deployed application..."
+        
+        // Wait for application to start up
+        sleep(30)
+        
+        // Simple health check - fails if app doesn't respond
+        withCredentials(bindings: [
+          sshUserPrivateKey(credentialsId: 'ec2-ssh-key', keyFileVariable: 'SSH_KEY', usernameVariable: 'SSH_USER')
+        ]) {
+          sh 'ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER"@"${EC2_HOST}" "curl -f http://localhost:8080/ || exit 1"'
+        }
+        
+        echo "✅ SUCCESS: Application is healthy and responding on port 8080"
+        echo "🌐 Your chatbot is accessible at: http://${EC2_HOST}:8080"
+      }
+    }
 
         }
       }
