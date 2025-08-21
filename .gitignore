@@ -54,4 +54,7 @@ terraform.tfstate.backup
 *.key
 id_rsa*
 
+### Demo Scripts ###
+DEMO_SCRIPT.md
+
 
