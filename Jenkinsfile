@@ -58,7 +58,7 @@ pipeline {
           string(credentialsId: 'CHATBOT_API_KEY', variable: 'CHATBOT_API_KEY')
         ]) {
           sh 'scp -i "$SSH_KEY" -o StrictHostKeyChecking=no scripts/deploy.sh "$SSH_USER"@"${EC2_HOST}":/tmp/deploy.sh'
-          // Deploy on host port 8081 to avoid Jenkins on 8080
+          // Deploy on host port 8081 to avoid Jenkins on 8080 
           sh 'ssh -i "$SSH_KEY" -o StrictHostKeyChecking=no "$SSH_USER"@"${EC2_HOST}" "chmod +x /tmp/deploy.sh && CHATBOT_API_KEY=\"$CHATBOT_API_KEY\" /tmp/deploy.sh ${DOCKER_IMAGE} ${IMAGE_TAG} chatbot-app 8081"'
         }
       }

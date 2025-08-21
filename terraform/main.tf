@@ -75,7 +75,7 @@ resource "aws_instance" "chatbot_server" {
   user_data = templatefile("${path.module}/user_data.sh", {
     docker_image = var.docker_image
     docker_tag   = var.docker_tag
-    api_key      = var.chatbot_api_key
+    api_key = var.chatbot_api_key
   })
 
   tags = {
@@ -106,3 +106,5 @@ output "ssh_command" {
   description = "SSH command to connect to the instance"
   value       = "ssh -i ${var.key_pair_name}.pem ec2-user@${aws_instance.chatbot_server.public_ip}"
 }
+
+
