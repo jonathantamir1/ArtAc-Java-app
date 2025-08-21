@@ -2,6 +2,85 @@
 
 A Spring Boot web application with an AI-powered chatbot using Google's Gemini API.
 
+## 📋 Prerequisites
+
+Before running this application locally, you need:
+
+### **Required Software**
+
+#### **Java 17+**
+```bash
+# macOS (using Homebrew)
+brew install openjdk@17
+
+# Ubuntu/Debian
+sudo apt update
+sudo apt install openjdk-17-jdk
+
+# CentOS/RHEL/Amazon Linux
+sudo yum install java-17-openjdk-devel
+
+# Windows
+# Download from: https://adoptium.net/
+```
+
+#### **Maven 3.6+**
+```bash
+# macOS (using Homebrew)
+brew install maven
+
+# Ubuntu/Debian
+sudo apt update
+sudo apt install maven
+
+# CentOS/RHEL/Amazon Linux
+sudo yum install maven
+
+# Windows
+# Download from: https://maven.apache.org/download.cgi
+```
+
+### **Required Accounts & Keys**
+- **Google Gemini API Key** - [Get one here](https://makersuite.google.com/app/apikey)
+
+### **Optional (for advanced features)**
+
+#### **Docker**
+```bash
+# macOS
+brew install --cask docker
+
+# Ubuntu/Debian
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER
+
+# CentOS/RHEL/Amazon Linux
+sudo yum install -y docker
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker $USER
+
+# Windows
+# Download from: https://www.docker.com/products/docker-desktop
+```
+
+#### **Git**
+```bash
+# macOS
+brew install git
+
+# Ubuntu/Debian
+sudo apt update
+sudo apt install git
+
+# CentOS/RHEL/Amazon Linux
+sudo yum install git
+
+# Windows
+# Download from: https://git-scm.com/downloads
+```
+
 ## 🚀 Quick Start
 
 ### 1. Clone and Setup 
